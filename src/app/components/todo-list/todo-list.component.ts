@@ -1,19 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
-})
-
-export class TodoListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  todos = [{
+const demoTodos = [{
     id: 1,
     content: "Learn Angular",
     isDone: false,
@@ -26,5 +12,19 @@ export class TodoListComponent implements OnInit {
     content: "Do exercise",
     isDone: false,
   },];
+@Component({
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss']
+})
+export class TodoListComponent implements OnInit {
+
+  constructor() { }
+  todos:any = [];
+  ngOnInit(): void {
+    this.todos = demoTodos
+  }
+
+  
   
 }
