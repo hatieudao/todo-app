@@ -23,7 +23,7 @@ export class LocalStorageService{
   getObject(key: string):any{
     return JSON.parse(this.storage[key] ||'{}');
   }
-   getValue<T>(key: string): T {
+  getValue<T>(key: string): T {
     const obj = JSON.parse(this.storage[key] || null);
     return <T>obj;
   }

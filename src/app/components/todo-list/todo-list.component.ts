@@ -1,17 +1,8 @@
+import { TodoService } from "./../../services/todo.service";
 import { Component, OnInit } from '@angular/core';
-const demoTodos = [{
-    id: 1,
-    content: "Learn Angular",
-    isDone: false,
-  },{
-    id: 2,
-    content: "Learn Angular material",
-    isDone: false,
-  },{
-    id: 3,
-    content: "Do exercise",
-    isDone: false,
-  },];
+import { Todo } from 'src/app/models/todo.model';
+import { Observable } from "rxjs";
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -19,12 +10,12 @@ const demoTodos = [{
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
-  todos:any = [];
+  todos$: Observable<Todo[]> | undefined;
+  constructor(private todoService: TodoService) { }
   ngOnInit(): void {
-    this.todos = demoTodos
+    this.todos$ = this.todoService.todos$;
   }
-
-  
-  
+  onDeleteItem(todo: Todo){
+    this.todoService.deleteTodo(todo.id);
+  }
 }

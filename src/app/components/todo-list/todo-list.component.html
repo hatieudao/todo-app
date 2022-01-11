@@ -1,2 +1,6 @@
-<app-todo-item *ngFor="let todo of todos" [todo]="todo">
+<app-todo-item 
+*ngFor="let todo of (todos$|async)" 
+[todo]="todo"
+(deleteItem)="onDeleteItem($event)"
+>
 </app-todo-item>

@@ -1,7 +1,18 @@
-<form action="" class="todoForm">
-  <mat-form-field>
+
+<form class="todoForm">
+  <mat-form-field class="todoForm__input">
     <mat-label>Todo content</mat-label>
-    <input matInput placeholder="Do something">
+    <input 
+    matInput 
+    name="todo-content"
+    [(ngModel)]="todoContent" 
+    placeholder="Do something"
+    required>
   </mat-form-field>
-  <button mat-button color="primary">Add</button>
+  <button 
+    mat-raised-button 
+    class="todoForm__btn" 
+    color="accent"
+    (click)="addTodo()"
+  >Add</button>
 </form>

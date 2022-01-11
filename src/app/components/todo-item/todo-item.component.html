@@ -2,6 +2,6 @@
   <div class="todoItem__content">
     <button mat-raised-button color="primary">Done</button>
     <mat-card-title>{{todo.content}}</mat-card-title>
-    <button mat-raised-button color="accent">Delete</button>
+    <button mat-raised-button color="warn" (click)="removeItem()" >Delete</button>
   </div>
 </mat-card>
