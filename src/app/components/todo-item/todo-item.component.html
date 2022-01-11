@@ -1,7 +1,28 @@
 <mat-card class="todoItem">
-  <div class="todoItem__content">
-    <button mat-raised-button color="primary">Done</button>
-    <mat-card-title>{{todo.content}}</mat-card-title>
-    <button mat-raised-button color="warn" (click)="removeItem()" >Delete</button>
+  <mat-form-field *ngIf="isEdit" class="todoItem__editForm" >
+    <input 
+      matInput 
+      [(ngModel)]="todo.content"
+      placeholder="New Content" 
+      value="{{todo.content}}"
+      (keyup.enter)="updateTodo()"
+    >
+    <button mat-stroked-button (click)="editItem()" >Cancel</button>
+  </mat-form-field>
+  <div class="todoItem__content" 
+    *ngIf="!isEdit" 
+    (dblclick)="editItem()">
+    <button mat-raised-button
+      (click)="completeTodo()" 
+      color="primary">Done</button>
+    <mat-card-title>
+      <p [ngClass]="{isDone: todo.isDone}">
+        {{todo.content}}
+      </p>
+    </mat-card-title>
+    <div class="todoItem__action">
+      <button mat-stroked-button (click)="editItem()" >Edit</button>
+      <button mat-raised-button color="warn" (click)="removeItem()">Delete</button>
+    </div>
   </div>
 </mat-card>

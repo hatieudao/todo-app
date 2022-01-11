@@ -1,9 +1,30 @@
 .todoItem{
-  width: 500px;
+  width: 800px;
   margin-bottom: 10px;
   &__content{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .isDone{
+      color: #414141;
+      text-decoration: line-through;
+    }
+  }
+  &__action{
+    button{
+      margin-left: 10px;
+    }
+  }
+  &__editForm{
+    width: 100%;
+    position: relative;
+    input{
+      width: 90% !important;
+    }
+    button{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }

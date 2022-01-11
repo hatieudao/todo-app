@@ -51,8 +51,21 @@ export class TodoService {
     this.todos.unshift(newTodo);
     this.updateStorage();
   }
+  updateTodo(todo: Todo){
+    const pos = this.todos.findIndex(thisTodo => thisTodo.id === todo.id);
+    if(pos === -1) return;
+    this.todos[pos] = todo;
+    this.updateStorage();
+
+  }
   deleteTodo(id:number){
     this.todos = this.todos.filter(todo => todo.id !== id);
     this.updateStorage();
+  }
+  changeStatusTodo(id:number, status:boolean){
+    const pos = this.todos.findIndex(todo => todo.id === id);
+    if(pos === -1) return;
+    this.todos[pos].isDone = status;
+    this.updateStorage()
   }
 }

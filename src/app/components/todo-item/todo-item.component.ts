@@ -10,6 +10,9 @@ export class TodoItemComponent implements OnInit {
 
   @Input() todo!: Todo;
   @Output() deleteItem: EventEmitter<Todo> = new EventEmitter<Todo>(); 
+  @Output() updateItem: EventEmitter<Todo> = new EventEmitter<Todo>(); 
+  isEdit:boolean = false;
+  editConnet:string = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -18,4 +21,15 @@ export class TodoItemComponent implements OnInit {
   removeItem(){
     this.deleteItem.emit(this.todo);
   }
+  editItem(){
+    this.isEdit = !this.isEdit;
+  }
+  completeTodo() {
+    this.todo.isDone = !this.todo.isDone;
+  }
+  updateTodo(){
+    this.updateItem.emit(this.todo);
+    this.isEdit = false;
+  }
+
 }
