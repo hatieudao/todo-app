@@ -62,10 +62,10 @@ export class TodoService {
     this.todos = this.todos.filter(todo => todo.id !== id);
     this.updateStorage();
   }
-  changeStatusTodo(id:number, status:boolean){
+  changeStatusTodo(id:number){
     const pos = this.todos.findIndex(todo => todo.id === id);
     if(pos === -1) return;
-    this.todos[pos].isDone = status;
+    this.todos[pos].isDone = !this.todos[pos].isDone;
     this.updateStorage()
   }
 }

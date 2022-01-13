@@ -21,4 +21,7 @@ export class TodoListComponent implements OnInit {
   onDeleteItem(todo: Todo){
     this.todoService.deleteTodo(todo.id);
   }
+  onChangeStatusItem(todoId: number){
+    this.todoService.changeStatusTodo(todoId);
+  }
 }

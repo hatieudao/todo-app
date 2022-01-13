@@ -7,16 +7,16 @@
       value="{{todo.content}}"
       (keyup.enter)="updateTodo()"
     >
-    <button mat-stroked-button (click)="editItem()" >Cancel</button>
+    <button mat-raised-button color="primary" (click)="editItem()" >Cancel</button>
   </mat-form-field>
   <div class="todoItem__content" 
-    *ngIf="!isEdit" 
-    (dblclick)="editItem()">
+    *ngIf="!isEdit" >
     <button mat-raised-button
       (click)="completeTodo()" 
       color="primary">Done</button>
     <mat-card-title>
-      <p [ngClass]="{isDone: todo.isDone}">
+      <p [ngClass]="{isDone: todo.isDone}"
+      (dblclick)="editItem()">
         {{todo.content}}
       </p>
     </mat-card-title>

@@ -18,13 +18,11 @@
   &__editForm{
     width: 100%;
     position: relative;
-    input{
-      width: 90% !important;
-    }
     button{
       position: absolute;
       top: 0;
       right: 0;
+      opacity: 1 !important;
     }
   }
 }

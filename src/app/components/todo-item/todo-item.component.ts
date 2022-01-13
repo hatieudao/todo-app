@@ -10,7 +10,8 @@ export class TodoItemComponent implements OnInit {
 
   @Input() todo!: Todo;
   @Output() deleteItem: EventEmitter<Todo> = new EventEmitter<Todo>(); 
-  @Output() updateItem: EventEmitter<Todo> = new EventEmitter<Todo>(); 
+  @Output() updateItem: EventEmitter<Todo> = new EventEmitter<Todo>();
+  @Output() changStatusItem: EventEmitter<number> = new EventEmitter<number>();
   isEdit:boolean = false;
   editConnet:string = '';
   constructor() { }
@@ -25,7 +26,8 @@ export class TodoItemComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
   completeTodo() {
-    this.todo.isDone = !this.todo.isDone;
+    this.changStatusItem.emit(this.todo.id);
+    // this.todo.isDone = !this.todo.isDone;
   }
   updateTodo(){
     this.updateItem.emit(this.todo);
